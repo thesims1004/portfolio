@@ -59,12 +59,16 @@ class ProjectsSection extends StatefulComponent {
               gap: Gap.all(7.px),
               color: AppColors.textMuted,
               backgroundColor: Colors.transparent,
-              border: Border.only(
-                  bottom: BorderSide(color: Colors.transparent, width: 2.px)),
               cursor: .pointer,
               fontFamily: AppFonts.sans,
               fontWeight: .w500,
               raw: {
+                // Full reset of the native <button> chrome, then add an
+                // underline via border-bottom only (design parity).
+                'appearance': 'none',
+                '-webkit-appearance': 'none',
+                'border': 'none',
+                'border-bottom': '2px solid transparent',
                 'font-size': '14px',
                 'padding': '10px 14px',
                 'margin-bottom': '-2px',
@@ -85,8 +89,7 @@ class ProjectsSection extends StatefulComponent {
             css('&').styles(
               color: AppColors.primary,
               fontWeight: .w600,
-              border: Border.only(
-                  bottom: BorderSide(color: AppColors.primary, width: 2.px)),
+              raw: {'border-bottom': '2px solid #2E5A8C'},
             ),
             css('.tab-count').styles(
                 color: AppColors.primary, backgroundColor: AppColors.countBg),

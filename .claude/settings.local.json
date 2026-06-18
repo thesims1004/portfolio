@@ -59,7 +59,8 @@
       "Bash(unzip -q /tmp/portfolio.docx)",
       "Bash(awk ' *)",
       "Bash(awk '{print $5, $9}')",
-      "Bash(curl -s https://thesims1004.github.io/portfolio/)"
+      "Bash(curl -s https://thesims1004.github.io/portfolio/)",
+      "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://localhost:8080/)"
     ]
   }
 }
