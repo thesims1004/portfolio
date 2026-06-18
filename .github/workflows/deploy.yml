@@ -20,7 +20,7 @@ jobs:
         with:
           sdk: stable
       - name: Install Jaspr CLI
-        run: dart pub global activate jaspr_cli
+        run: dart pub global activate jaspr_cli 0.22.4
       - name: Install dependencies
         run: dart pub get
       - name: Build static site
