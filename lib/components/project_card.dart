@@ -25,8 +25,8 @@ class ProjectCard extends StatelessComponent {
         // Fixed-ratio thumbnail: image is absolutely positioned and cover-fit,
         // so every card has the same height regardless of the image's ratio.
         div(classes: 'pcard-thumb', [
-          if (project.thumbnail != null)
-            img(src: project.thumbnail!, alt: project.name)
+          if (project.cover != null)
+            img(src: project.cover!, alt: project.name, attributes: {'loading': 'lazy'})
           else
             span(classes: 'thumb-name', [Component.text(project.name)]),
         ]),

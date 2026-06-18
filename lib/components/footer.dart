@@ -15,10 +15,10 @@ class Footer extends StatelessComponent {
         div(classes: 'inner', [
           span(classes: 'overline', [Component.text('Contact')]),
           h2(classes: 'contact-title', [
-            Component.text('함께 만들 디바이스가 있다면, 편하게 연락 주세요.'),
+            Component.text('새로운 기회를 찾고 있습니다.'),
           ]),
           p(classes: 'contact-lead', [
-            Component.text('채용·협업 문의를 환영합니다. 이메일이 가장 빠릅니다.'),
+            Component.text('채용·협업 제안을 환영합니다. 이메일로 연락 주시면 가장 빠르게 답변드리겠습니다.'),
           ]),
           div(classes: 'contact-grid', [
             for (final c in Profile.contacts)

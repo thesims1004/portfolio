@@ -18,10 +18,21 @@ class ProjectModal extends StatelessComponent {
       div(classes: 'modal-backdrop', events: {'click': (_) => onClose()}, []),
       div(classes: 'modal-panel', [
         div(classes: 'modal-figure', [
-          if (project.thumbnail != null)
-            img(src: project.thumbnail!, alt: project.name)
+          if (project.screenshots.isNotEmpty)
+            div(classes: 'gallery${project.screenshots.length > 1 ? ' multi' : ''}', [
+              for (final shot in project.screenshots)
+                div(classes: 'gframe', [
+                  img(src: shot, alt: project.name, attributes: {'loading': 'lazy'}),
+                ]),
+            ])
           else
-            span(classes: 'fig-name', [Component.text('${project.name} 스크린샷')]),
+            div(classes: 'fig-empty', [
+              span([Component.text('${project.name} 스크린샷')]),
+            ]),
+          if (project.screenshots.length > 1)
+            span(classes: 'gallery-hint', [
+              Component.text('${project.screenshots.length}장 · 좌우로 스크롤'),
+            ]),
           button(
             classes: 'modal-close',
             attributes: {'aria-label': '닫기'},
@@ -97,23 +108,58 @@ class ProjectModal extends StatelessComponent {
           css('.modal-figure', [
             css('&').styles(
               position: .relative(),
-              width: 100.percent,
               backgroundColor: AppColors.chipBg,
-              overflow: .hidden,
-              raw: {'aspect-ratio': '16 / 9'},
+              border: Border.only(
+                  bottom: BorderSide(color: AppColors.border, width: 1.px)),
             ),
-            css('img').styles(
-              position: .absolute(
-                  top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
-              width: 100.percent,
-              height: 100.percent,
-              raw: {'object-fit': 'cover', 'object-position': 'center top'},
+            // Horizontal filmstrip — height is capped so tall (portrait)
+            // screenshots never blow up the modal; multiple images scroll.
+            css('.gallery').styles(
+              display: .flex,
+              alignItems: .center,
+              justifyContent: .center,
+              raw: {
+                'height': 'clamp(240px,42vh,360px)',
+                'overflow-x': 'auto',
+                'scroll-snap-type': 'x mandatory',
+              },
             ),
-            css('.fig-name').styles(
-              position: .absolute(top: 50.percent, left: 50.percent),
+            css('.gallery.multi').styles(
+                justifyContent: .start, raw: {'gap': '1px'}),
+            css('.gframe', [
+              css('&').styles(
+                display: .flex,
+                alignItems: .center,
+                justifyContent: .center,
+                height: 100.percent,
+                backgroundColor: AppColors.chipBg,
+                raw: {'flex': '0 0 auto', 'scroll-snap-align': 'center'},
+              ),
+              css('img').styles(
+                display: .block,
+                height: 100.percent,
+                raw: {'width': 'auto', 'object-fit': 'contain'},
+              ),
+            ]),
+            css('.fig-empty').styles(
+              display: .flex,
+              alignItems: .center,
+              justifyContent: .center,
               color: AppColors.textFaint,
               fontSize: AppType.small.px,
-              raw: {'transform': 'translate(-50%,-50%)'},
+              raw: {'aspect-ratio': '16 / 9'},
+            ),
+            css('.gallery-hint').styles(
+              position: .absolute(bottom: 12.px, left: 12.px),
+              color: AppColors.white,
+              fontFamily: AppFonts.mono,
+              raw: {
+                'font-size': '11px',
+                'background': 'rgba(16,24,40,0.55)',
+                'border-radius': '5px',
+                'padding': '4px 9px',
+                'pointer-events': 'none',
+              },
             ),
           ]),
           css('.modal-close', [

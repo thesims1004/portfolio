@@ -66,4 +66,7 @@ class Project {
   });
 
   String get overline => org ?? category.tabLabel;
+
+  /// First image to use as the card thumbnail (falls back to [thumbnail]).
+  String? get cover => screenshots.isNotEmpty ? screenshots.first : thumbnail;
 }

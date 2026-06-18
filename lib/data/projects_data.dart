@@ -65,7 +65,7 @@ const List<Project> projects = [
   // ── Renasoftware · Mobile ─────────────────────────────────────────────
   Project(
     id: 'snapmovie',
-    thumbnail: 'images/projects/snapmovie.png',
+    screenshots: ['images/projects/snapmovie-1.jpg', 'images/projects/snapmovie-2.jpg',],
     name: '스냅무비',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -85,7 +85,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'hamsoa-shes',
-    thumbnail: 'images/projects/hamsoa-shes.png',
+    screenshots: ['images/projects/hamsoa-shes-1.jpg', 'images/projects/hamsoa-shes-2.jpg',],
     name: "함소아·SHE'S 한의원",
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -107,7 +107,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'study-genius',
-    thumbnail: 'images/projects/study-genius.png',
+    screenshots: ['images/projects/study-genius-1.jpg', 'images/projects/study-genius-2.jpg', 'images/projects/study-genius-3.jpg', 'images/projects/study-genius-4.jpg',],
     name: '공부천재',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -145,7 +145,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'golpai',
-    thumbnail: 'images/projects/golpai.png',
+    screenshots: ['images/projects/golpai-1.jpg', 'images/projects/golpai-2.jpg', 'images/projects/golpai-3.jpg', 'images/projects/golpai-4.jpg', 'images/projects/golpai-5.jpg', 'images/projects/golpai-6.jpg',],
     name: '골파이 온라인 레슨',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -163,7 +163,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'bandai-namco',
-    thumbnail: 'images/projects/bandai-namco.png',
+    screenshots: ['images/projects/bandai-namco-1.jpg', 'images/projects/bandai-namco-2.jpg', 'images/projects/bandai-namco-3.jpg',],
     name: '반다이남코코리아 멤버십·몰',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -200,7 +200,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'kingkoil-berex',
-    thumbnail: 'images/projects/kingkoil-berex.png',
+    screenshots: ['images/projects/kingkoil-berex-1.jpg', 'images/projects/kingkoil-berex-2.jpg', 'images/projects/kingkoil-berex-3.jpg', 'images/projects/kingkoil-berex-4.jpg', 'images/projects/kingkoil-berex-5.jpg',],
     name: '킹코일 스마트라이프 & 코웨이 BEREX',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -218,7 +218,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'serajeum-iot',
-    thumbnail: 'images/projects/serajeum-iot.png',
+    screenshots: ['images/projects/serajeum-iot-1.jpg', 'images/projects/serajeum-iot-2.jpg', 'images/projects/serajeum-iot-3.jpg', 'images/projects/serajeum-iot-4.jpg', 'images/projects/serajeum-iot-5.jpg', 'images/projects/serajeum-iot-6.jpg',],
     name: '세라젬 IoT',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -233,7 +233,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'focus-timer',
-    thumbnail: 'images/projects/focus-timer.png',
+    screenshots: ['images/projects/focus-timer-1.jpg',],
     name: '방치의 신',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -252,7 +252,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'ls-plc',
-    thumbnail: 'images/projects/ls-plc.png',
+    screenshots: ['images/projects/ls-plc-1.jpg', 'images/projects/ls-plc-2.jpg', 'images/projects/ls-plc-3.jpg', 'images/projects/ls-plc-4.jpg', 'images/projects/ls-plc-5.jpg',],
     name: 'LS산전 XGT-PLC',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -280,7 +280,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'musicon',
-    thumbnail: 'images/projects/musicon.png',
+    screenshots: ['images/projects/musicon-1.jpg', 'images/projects/musicon-2.jpg', 'images/projects/musicon-3.jpg',],
     name: '뮤직온',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
@@ -297,7 +297,7 @@ const List<Project> projects = [
   // ── Renasoftware · Desktop ────────────────────────────────────────────
   Project(
     id: 'ablemax-optaq',
-    thumbnail: 'images/projects/ablemax-optaq.png',
+    screenshots: ['images/projects/ablemax-optaq-1.jpg', 'images/projects/ablemax-optaq-2.jpg', 'images/projects/ablemax-optaq-3.jpg',],
     name: 'ableMAX OptaQ',
     category: ProjectCategory.renasoftwareDesktop,
     org: 'Renasoftware · Desktop',
@@ -312,7 +312,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'etri-cps',
-    thumbnail: 'images/projects/etri-cps.png',
+    screenshots: ['images/projects/etri-cps-1.jpg', 'images/projects/etri-cps-2.jpg', 'images/projects/etri-cps-3.jpg',],
     name: 'ETRI CPS Visualizer',
     category: ProjectCategory.renasoftwareDesktop,
     org: 'Renasoftware · Desktop',

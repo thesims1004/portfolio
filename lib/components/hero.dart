@@ -109,7 +109,7 @@ class Hero extends StatelessComponent {
         css('.hero-photo').styles(raw: {'flex': '0 0 auto'}),
         css('.photo-img').styles(raw: {
           'display': 'block',
-          'width': 'clamp(168px,22vw,228px)',
+          'width': 'clamp(128px,20vw,150px)',
           'aspect-ratio': '4 / 5',
           'object-fit': 'cover',
           'border-radius': '14px',
@@ -124,7 +124,7 @@ class Hero extends StatelessComponent {
           border: Border.all(color: AppColors.border, width: 1.px),
           fontSize: AppType.small.px,
           raw: {
-            'width': 'clamp(168px,22vw,228px)',
+            'width': 'clamp(128px,20vw,150px)',
             'aspect-ratio': '4 / 5',
             'border-radius': '14px',
           },
