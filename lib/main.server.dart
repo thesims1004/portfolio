@@ -19,10 +19,15 @@ void main() {
   runApp(Document(
     title: _siteTitle,
     lang: 'ko',
+    // Production target is the GitHub Pages project site (/portfolio/), so the
+    // base defaults to that — CI needs no extra flags. Jaspr requires an
+    // absolute base (it normalizes './' back to root). For local dev the
+    // launch config overrides this with --dart-define=BASE_HREF=/.
+    base: const String.fromEnvironment('BASE_HREF', defaultValue: '/portfolio/'),
     viewport: 'width=device-width, initial-scale=1.0',
     meta: {
       'description': _siteDescription,
-      'author': 'Simson Shim (심진웅)',
+      'author': 'Sim Jin woong (심진웅)',
       'theme-color': '#2E5A8C',
     },
     styles: [

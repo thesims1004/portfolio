@@ -4,7 +4,7 @@
     {
       "name": "jaspr",
       "runtimeExecutable": "C:\\Users\\JWSIM\\AppData\\Local\\Pub\\Cache\\bin\\jaspr.bat",
-      "runtimeArgs": ["serve"],
+      "runtimeArgs": ["serve", "--dart-define=BASE_HREF=/"],
       "port": 8080
     }
   ]
