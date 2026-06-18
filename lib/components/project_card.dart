@@ -16,13 +16,14 @@ class ProjectCard extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final chips = project.techStack.take(_maxChips).toList();
-    final overflow = project.techStack.length - chips.length;
 
     return div(
       classes: 'pcard',
       attributes: {'role': 'button', 'tabindex': '0'},
       events: {'click': (_) => onOpen()},
       [
+        // Fixed-ratio thumbnail: image is absolutely positioned and cover-fit,
+        // so every card has the same height regardless of the image's ratio.
         div(classes: 'pcard-thumb', [
           if (project.thumbnail != null)
             img(src: project.thumbnail!, alt: project.name)
@@ -30,15 +31,13 @@ class ProjectCard extends StatelessComponent {
             span(classes: 'thumb-name', [Component.text(project.name)]),
         ]),
         div(classes: 'pcard-body', [
-          span(classes: 'overline', [Component.text(project.overline)]),
-          h3(classes: 'pcard-title', [Component.text(project.name)]),
-          p(classes: 'pcard-desc', [Component.text(project.oneLiner)]),
-          div(classes: 'pcard-tech', [
-            for (final t in chips) span(classes: 'chip', [Component.text(t)]),
-            if (overflow > 0)
-              span(classes: 'chip chip-more', [Component.text('+$overflow')]),
+          div(classes: 'pcard-cat', [Component.text(project.overline)]),
+          div(classes: 'pcard-title', [Component.text(project.name)]),
+          div(classes: 'pcard-desc', [Component.text(project.oneLiner)]),
+          div(classes: 'pcard-tags', [
+            for (final t in chips) span(classes: 'tag', [Component.text(t)]),
           ]),
-          span(classes: 'pcard-period', [Component.text(project.period)]),
+          div(classes: 'pcard-period', [Component.text(project.period)]),
         ]),
       ],
     );
@@ -52,70 +51,100 @@ class ProjectCard extends StatelessComponent {
             flexDirection: .column,
             backgroundColor: AppColors.white,
             border: Border.all(color: AppColors.border, width: 1.px),
-            radius: .circular(AppRadius.m.px),
             cursor: .pointer,
             overflow: .hidden,
-            transition: Transition('all', duration: Duration(milliseconds: 160)),
-          ),
-          css('&:hover').styles(
-            border: Border.all(color: AppColors.borderStrong, width: 1.px),
             raw: {
-              'transform': 'translateY(-3px)',
-              'box-shadow': '0 12px 28px rgba(20,24,31,0.08)',
+              'border-radius': '9px',
+              'box-shadow': '0 1px 2px rgba(16,24,40,0.05)',
+              'transition':
+                  'transform .18s ease, box-shadow .18s ease, border-color .18s ease',
             },
           ),
+          css('&:hover').styles(
+            border: Border.all(color: AppColors.blueChipBorder, width: 1.px),
+            raw: {
+              'transform': 'translateY(-3px)',
+              'box-shadow': '0 12px 28px rgba(16,24,40,0.10)',
+            },
+          ),
+          // Thumbnail (fixed 16:9).
           css('.pcard-thumb', [
             css('&').styles(
-              display: .flex,
-              alignItems: .center,
-              justifyContent: .center,
-              backgroundColor: AppColors.surfaceSunken,
-              border: Border.only(
-                  bottom: BorderSide(color: AppColors.border, width: 1.px)),
+              position: .relative(),
+              width: 100.percent,
+              backgroundColor: AppColors.chipBg,
+              overflow: .hidden,
               raw: {'aspect-ratio': '16 / 9'},
             ),
-            css('.thumb-name').styles(
-              padding: .symmetric(horizontal: AppSpacing.m.px),
-              color: AppColors.textFaint,
-              fontSize: AppType.small.rem,
-              fontWeight: .w500,
-              textAlign: .center,
-            ),
             css('img').styles(
+              position: .absolute(
+                  top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
               width: 100.percent,
               height: 100.percent,
-              raw: {'object-fit': 'cover', 'object-position': 'center 22%'},
+              raw: {'object-fit': 'cover', 'object-position': 'center top'},
+            ),
+            css('.thumb-name').styles(
+              position: .absolute(top: 50.percent, left: 50.percent),
+              color: AppColors.textFaint,
+              fontSize: AppType.small.px,
+              fontWeight: .w500,
+              textAlign: .center,
+              raw: {
+                'transform': 'translate(-50%,-50%)',
+                'padding': '0 16px',
+                'width': '100%',
+              },
             ),
           ]),
+          // Body.
           css('.pcard-body').styles(
             display: .flex,
             flexDirection: .column,
-            gap: Gap.all(AppSpacing.s.px),
-            padding: .all(AppSpacing.l.px),
-            height: 100.percent,
+            raw: {'padding': '18px', 'flex': '1'},
+          ),
+          css('.pcard-cat').styles(
+            color: AppColors.textFaint,
+            fontFamily: AppFonts.mono,
+            raw: {
+              'font-size': '11px',
+              'letter-spacing': '0.03em',
+              'margin-bottom': '8px',
+            },
           ),
           css('.pcard-title').styles(
             color: AppColors.text,
-            fontSize: AppType.lead.rem,
             fontWeight: .w700,
+            raw: {
+              'font-size': '17px',
+              'letter-spacing': '-0.01em',
+              'margin-bottom': '6px',
+            },
           ),
           css('.pcard-desc').styles(
             color: AppColors.textMuted,
-            fontSize: AppType.small.rem,
-            lineHeight: 1.6.em,
+            raw: {
+              'font-size': '14px',
+              'line-height': '1.55',
+              'margin-bottom': '16px',
+              'flex': '1',
+            },
           ),
-          css('.pcard-tech').styles(
+          css('.pcard-tags').styles(
             display: .flex,
             flexWrap: .wrap,
-            gap: Gap.all(AppSpacing.xs.px),
-            margin: .only(top: AppSpacing.xs.px),
+            gap: Gap.all(6.px),
+            raw: {'margin-bottom': '14px'},
           ),
-          css('.chip-more').styles(color: AppColors.accent),
+          css('.pcard-tags .tag').styles(
+            color: AppColors.chipTextMuted,
+            backgroundColor: AppColors.chipBg,
+            fontFamily: AppFonts.mono,
+            raw: {'font-size': '11px', 'border-radius': '4px', 'padding': '4px 9px'},
+          ),
           css('.pcard-period').styles(
-            margin: .only(top: AppSpacing.xs.px),
             color: AppColors.textFaint,
             fontFamily: AppFonts.mono,
-            fontSize: AppType.micro.rem,
+            raw: {'font-size': '12px'},
           ),
         ]),
       ];

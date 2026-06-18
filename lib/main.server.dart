@@ -31,11 +31,11 @@ void main() {
       'theme-color': '#2E5A8C',
     },
     styles: [
-      // Web fonts: Pretendard (KR) + Inter / JetBrains Mono (EN/mono).
+      // Web fonts: Pretendard (KR) + Inter / JetBrains Mono (Latin/mono).
       css.import(
-          'https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css'),
+          'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'),
       css.import(
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap'),
+          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap'),
       ...globalStyles,
     ],
     head: [

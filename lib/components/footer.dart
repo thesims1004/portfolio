@@ -12,7 +12,7 @@ class Footer extends StatelessComponent {
   Component build(BuildContext context) {
     return Component.fragment([
       section(id: 'contact', classes: 'section contact', [
-        div(classes: 'container contact-inner', [
+        div(classes: 'inner', [
           span(classes: 'overline', [Component.text('Contact')]),
           h2(classes: 'contact-title', [
             Component.text('함께 만들 디바이스가 있다면, 편하게 연락 주세요.'),
@@ -20,20 +20,22 @@ class Footer extends StatelessComponent {
           p(classes: 'contact-lead', [
             Component.text('채용·협업 문의를 환영합니다. 이메일이 가장 빠릅니다.'),
           ]),
-          div(classes: 'contact-list', [
+          div(classes: 'contact-grid', [
             for (final c in Profile.contacts)
               if (!c.pending)
-                a(href: c.href!, classes: 'contact-item', [
-                  span(classes: 'ci-label', [Component.text(c.label)]),
-                  span(classes: 'ci-value', [Component.text(c.value)]),
+                a(href: c.href!, classes: 'contact-card', [
+                  div(classes: 'cc-label', [Component.text(c.label)]),
+                  div(classes: 'cc-value', [Component.text(c.value)]),
                 ]),
           ]),
         ]),
       ]),
       footer(classes: 'site-footer', [
-        div(classes: 'container footer-inner', [
-          span([Component.text('© 2026 ${Profile.name} · ${Profile.nameEn}')]),
-          span(classes: 'footer-built', [Component.text('Built with Jaspr')]),
+        div(classes: 'inner footer-inner', [
+          span(classes: 'copy', [
+            Component.text('© 2026 ${Profile.name} (${Profile.nameEn})'),
+          ]),
+          span(classes: 'built', [Component.text('Built with Jaspr')]),
         ]),
       ]),
     ]);
@@ -41,72 +43,94 @@ class Footer extends StatelessComponent {
 
   @css
   static List<StyleRule> get styles => [
-        css('.contact', [
-          css('&').styles(backgroundColor: AppColors.white),
-          css('.contact-title').styles(
-            margin: .only(top: AppSpacing.s.px),
-            maxWidth: 620.px,
-            color: AppColors.text,
-            fontSize: AppType.h2.rem,
-            fontWeight: .w800,
+        css('.contact .inner').styles(
+          width: 100.percent,
+          maxWidth: AppLayout.maxWidth.px,
+          margin: .symmetric(horizontal: Unit.auto),
+        ),
+        css('.contact-title').styles(
+          color: AppColors.text,
+          fontWeight: .w700,
+          raw: {
+            'font-size': 'clamp(26px,4vw,40px)',
+            'line-height': '1.2',
+            'letter-spacing': '-0.025em',
+            'margin': '0 0 16px',
+            'max-width': '620px',
+          },
+        ),
+        css('.contact-lead').styles(
+          color: AppColors.textMuted,
+          raw: {
+            'font-size': '16px',
+            'line-height': '1.7',
+            'margin': '0 0 36px',
+            'max-width': '520px',
+          },
+        ),
+        css('.contact-grid').styles(
+          display: .grid,
+          gap: Gap.all(14.px),
+          raw: {
+            'grid-template-columns': 'repeat(auto-fit,minmax(220px,1fr))',
+            'max-width': '760px',
+          },
+        ),
+        css('.contact-card', [
+          css('&').styles(
+            display: .block,
+            backgroundColor: AppColors.white,
+            border: Border.all(color: AppColors.border, width: 1.px),
+            raw: {
+              'border-radius': '9px',
+              'padding': '20px',
+              'transition': 'border-color .16s, box-shadow .16s',
+            },
           ),
-          css('.contact-lead').styles(
-            margin: .only(top: AppSpacing.m.px, bottom: AppSpacing.xl.px),
-            color: AppColors.textMuted,
-            fontSize: AppType.lead.rem,
+          css('&:hover').styles(
+            border: Border.all(color: AppColors.blueChipBorder, width: 1.px),
+            raw: {'box-shadow': '0 8px 22px rgba(16,24,40,0.08)'},
           ),
-          css('.contact-list').styles(
-            display: .flex,
-            flexWrap: .wrap,
-            gap: Gap.all(AppSpacing.m.px),
+          css('.cc-label').styles(
+            color: AppColors.textFaint,
+            fontFamily: AppFonts.mono,
+            raw: {
+              'font-size': '11px',
+              'letter-spacing': '0.1em',
+              'text-transform': 'uppercase',
+              'margin-bottom': '8px',
+            },
           ),
-          css('.contact-item', [
-            css('&').styles(
-              display: .flex,
-              flexDirection: .column,
-              gap: Gap.all(AppSpacing.xs.px),
-              padding:
-                  .symmetric(horizontal: AppSpacing.l.px, vertical: AppSpacing.m.px),
-              backgroundColor: AppColors.surface,
-              border: Border.all(color: AppColors.border, width: 1.px),
-              radius: .circular(AppRadius.m.px),
-              transition: Transition('all', duration: Duration(milliseconds: 150)),
-            ),
-            css('&:hover').styles(
-              border: Border.all(color: AppColors.primary, width: 1.px),
-              raw: {'transform': 'translateY(-2px)'},
-            ),
-            css('.ci-label').styles(
-              color: AppColors.textFaint,
-              fontFamily: AppFonts.mono,
-              fontSize: AppType.micro.rem,
-              letterSpacing: 0.5.px,
-              textTransform: .upperCase,
-            ),
-            css('.ci-value').styles(
-              color: AppColors.text,
-              fontSize: AppType.lead.rem,
-              fontWeight: .w600,
-              fontFamily: AppFonts.en,
-            ),
-          ]),
+          css('.cc-value').styles(
+            color: AppColors.primary,
+            fontWeight: .w600,
+            raw: {'font-size': '15px', 'word-break': 'break-all'},
+          ),
         ]),
+        // Footer.
         css('.site-footer', [
           css('&').styles(
-            padding: .symmetric(vertical: AppSpacing.l.px),
+            backgroundColor: AppColors.surface,
             border: Border.only(
-                top: BorderSide(color: AppColors.border, width: 1.px)),
-            backgroundColor: AppColors.background,
+                top: BorderSide(color: AppColors.borderSoft, width: 1.px)),
           ),
           css('.footer-inner').styles(
+            width: 100.percent,
+            maxWidth: AppLayout.maxWidth.px,
+            margin: .symmetric(horizontal: Unit.auto),
             display: .flex,
             flexWrap: .wrap,
-            gap: Gap.all(AppSpacing.s.px),
+            alignItems: .center,
             justifyContent: .spaceBetween,
-            color: AppColors.textFaint,
-            fontSize: AppType.small.rem,
+            gap: Gap.all(12.px),
+            raw: {'padding': '28px 24px'},
           ),
-          css('.footer-built').styles(fontFamily: AppFonts.en),
+          css('.copy').styles(color: AppColors.textFaint, fontSize: AppType.tiny.px),
+          css('.built').styles(
+            color: AppColors.textFaint,
+            fontFamily: AppFonts.mono,
+            raw: {'font-size': '12px'},
+          ),
         ]),
       ];
 }

@@ -58,7 +58,8 @@
       "Bash(mkdir /tmp/dx)",
       "Bash(unzip -q /tmp/portfolio.docx)",
       "Bash(awk ' *)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(curl -s https://thesims1004.github.io/portfolio/)"
     ]
   }
 }

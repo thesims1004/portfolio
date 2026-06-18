@@ -5,8 +5,7 @@ import '../data/project.dart';
 import '../design/tokens.dart';
 
 /// Project detail modal. A backdrop (click → [onClose]) sits behind the panel,
-/// so clicks inside the panel never reach it — no event-propagation handling
-/// needed.
+/// so clicks inside the panel never reach it — no propagation handling needed.
 class ProjectModal extends StatelessComponent {
   const ProjectModal(this.project, {required this.onClose, super.key});
 
@@ -16,43 +15,39 @@ class ProjectModal extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(classes: 'modal-root', [
-      div(
-        classes: 'modal-backdrop',
-        events: {'click': (_) => onClose()},
-        [],
-      ),
+      div(classes: 'modal-backdrop', events: {'click': (_) => onClose()}, []),
       div(classes: 'modal-panel', [
-        button(
-          classes: 'modal-close',
-          attributes: {'aria-label': '닫기'},
-          events: {'click': (_) => onClose()},
-          [Component.text('×')],
-        ),
-        div(classes: 'modal-thumb', [
+        div(classes: 'modal-figure', [
           if (project.thumbnail != null)
             img(src: project.thumbnail!, alt: project.name)
           else
-            span(classes: 'thumb-name', [Component.text('${project.name} 스크린샷')]),
+            span(classes: 'fig-name', [Component.text('${project.name} 스크린샷')]),
+          button(
+            classes: 'modal-close',
+            attributes: {'aria-label': '닫기'},
+            events: {'click': (_) => onClose()},
+            [Component.text('✕')],
+          ),
         ]),
         div(classes: 'modal-body', [
+          div(classes: 'modal-cat', [Component.text(project.overline)]),
           div(classes: 'modal-head', [
-            span(classes: 'overline', [Component.text(project.overline)]),
+            h2(classes: 'modal-title', [Component.text(project.name)]),
             if (project.role != null)
               span(classes: 'role-badge', [Component.text(project.role!)]),
           ]),
-          h3(classes: 'modal-title', [Component.text(project.name)]),
-          span(classes: 'modal-period', [Component.text(project.period)]),
+          div(classes: 'modal-period', [Component.text(project.period)]),
           p(classes: 'modal-desc', [Component.text(project.description)]),
           if (project.impact != null)
             div(classes: 'impact', [
-              span(classes: 'overline', [Component.text('Impact')]),
-              p(classes: 'impact-text', [Component.text(project.impact!)]),
+              div(classes: 'impact-label', [Component.text('Impact')]),
+              div(classes: 'impact-text', [Component.text(project.impact!)]),
             ]),
           if (project.techStack.isNotEmpty) ...[
-            span(classes: 'overline mt', [Component.text('Tech Stack')]),
-            div(classes: 'modal-tech', [
+            div(classes: 'stack-label', [Component.text('Tech Stack')]),
+            div(classes: 'modal-tags', [
               for (final t in project.techStack)
-                span(classes: 'chip', [Component.text(t)]),
+                span(classes: 'tag', [Component.text(t)]),
             ]),
           ],
           if (project.links.isNotEmpty)
@@ -63,10 +58,7 @@ class ProjectModal extends StatelessComponent {
                   target: Target.blank,
                   attributes: {'rel': 'noopener noreferrer'},
                   classes: 'modal-link',
-                  [
-                    Component.text(l.label),
-                    span(classes: 'ext', [Component.text('↗')]),
-                  ],
+                  [Component.text('${l.label} ↗')],
                 ),
             ]),
         ]),
@@ -78,152 +70,182 @@ class ProjectModal extends StatelessComponent {
   static List<StyleRule> get styles => [
         css('.modal-root').styles(
           position: .fixed(top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
-          zIndex: const ZIndex(1000),
+          zIndex: const ZIndex(100),
           display: .flex,
-          alignItems: .center,
+          alignItems: .start,
           justifyContent: .center,
-          padding: .all(AppSpacing.l.px),
+          raw: {'overflow-y': 'auto', 'padding': 'clamp(16px,5vh,64px) 16px'},
         ),
         css('.modal-backdrop').styles(
           position: .absolute(top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
           backgroundColor: AppColors.overlay,
-          raw: {'backdrop-filter': 'blur(2px)'},
+          raw: {'backdrop-filter': 'blur(3px)'},
         ),
         css('.modal-panel', [
           css('&').styles(
             position: .relative(),
-            display: .flex,
-            flexDirection: .column,
             width: 100.percent,
-            maxWidth: 560.px,
-            maxHeight: 88.vh,
             backgroundColor: AppColors.white,
-            radius: .circular(AppRadius.l.px),
             border: Border.all(color: AppColors.border, width: 1.px),
             overflow: .hidden,
-            raw: {'box-shadow': '0 24px 60px rgba(20,24,31,0.28)'},
+            raw: {
+              'max-width': '680px',
+              'border-radius': '12px',
+              'box-shadow': '0 24px 60px rgba(16,24,40,0.24)',
+            },
           ),
-          css('.modal-close', [
+          css('.modal-figure', [
             css('&').styles(
-              position: .absolute(top: 12.px, right: 12.px),
-              zIndex: const ZIndex(2),
-              display: .flex,
-              alignItems: .center,
-              justifyContent: .center,
-              width: 32.px,
-              height: 32.px,
-              color: AppColors.text,
-              backgroundColor: AppColors.headerBg,
-              border: Border.all(color: AppColors.border, width: 1.px),
-              radius: .circular(AppRadius.full.px),
-              fontSize: 1.25.rem,
-              cursor: .pointer,
+              position: .relative(),
+              width: 100.percent,
+              backgroundColor: AppColors.chipBg,
+              overflow: .hidden,
+              raw: {'aspect-ratio': '16 / 9'},
             ),
-            css('&:hover').styles(backgroundColor: AppColors.surfaceSunken),
-          ]),
-          css('.modal-thumb', [
-            css('&').styles(
-              display: .flex,
-              alignItems: .center,
-              justifyContent: .center,
-              backgroundColor: AppColors.surfaceSunken,
-              border: Border.only(
-                  bottom: BorderSide(color: AppColors.border, width: 1.px)),
-              raw: {'aspect-ratio': '16 / 8'},
-            ),
-            css('.thumb-name').styles(
-                color: AppColors.textFaint, fontSize: AppType.small.rem),
             css('img').styles(
+              position: .absolute(
+                  top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
               width: 100.percent,
               height: 100.percent,
-              raw: {'object-fit': 'cover'},
+              raw: {'object-fit': 'cover', 'object-position': 'center top'},
+            ),
+            css('.fig-name').styles(
+              position: .absolute(top: 50.percent, left: 50.percent),
+              color: AppColors.textFaint,
+              fontSize: AppType.small.px,
+              raw: {'transform': 'translate(-50%,-50%)'},
             ),
           ]),
-          css('.modal-body').styles(
-            display: .flex,
-            flexDirection: .column,
-            gap: Gap.all(AppSpacing.s.px),
-            padding: .all(AppSpacing.l.px),
-            overflow: .auto,
+          css('.modal-close', [
+            css('&').styles(
+              position: .absolute(top: 14.px, right: 14.px),
+              display: .flex,
+              alignItems: .center,
+              justifyContent: .center,
+              width: 34.px,
+              height: 34.px,
+              color: AppColors.text,
+              border: .unset,
+              cursor: .pointer,
+              raw: {
+                'border-radius': '7px',
+                'background': 'rgba(255,255,255,0.92)',
+                'font-size': '18px',
+                'line-height': '1',
+                'box-shadow': '0 2px 8px rgba(16,24,40,0.15)',
+              },
+            ),
+            css('&:hover').styles(backgroundColor: AppColors.white),
+          ]),
+          css('.modal-body').styles(raw: {'padding': 'clamp(24px,4vw,34px)'}),
+          css('.modal-cat').styles(
+            color: AppColors.textFaint,
+            fontFamily: AppFonts.mono,
+            raw: {
+              'font-size': '11px',
+              'letter-spacing': '0.06em',
+              'text-transform': 'uppercase',
+              'margin-bottom': '10px',
+            },
           ),
           css('.modal-head').styles(
             display: .flex,
-            alignItems: .center,
+            alignItems: .start,
             justifyContent: .spaceBetween,
             gap: Gap.all(AppSpacing.m.px),
-          ),
-          css('.role-badge').styles(
-            padding: .symmetric(horizontal: 10.px, vertical: 4.px),
-            color: AppColors.primary,
-            border: Border.all(color: AppColors.impactBorder, width: 1.px),
-            radius: .circular(AppRadius.full.px),
-            fontSize: AppType.tiny.rem,
-            fontWeight: .w600,
-            raw: {'white-space': 'nowrap'},
+            raw: {'margin-bottom': '6px'},
           ),
           css('.modal-title').styles(
             color: AppColors.text,
-            fontSize: AppType.h3.rem,
-            fontWeight: .w800,
+            fontWeight: .w700,
+            raw: {'font-size': 'clamp(22px,3.4vw,27px)', 'letter-spacing': '-0.02em'},
+          ),
+          css('.role-badge').styles(
+            color: AppColors.primary,
+            backgroundColor: AppColors.white,
+            border: Border.all(color: AppColors.blueChipBorder, width: 1.px),
+            fontWeight: .w600,
+            raw: {
+              'font-size': '11px',
+              'border-radius': '5px',
+              'padding': '5px 11px',
+              'white-space': 'nowrap',
+              'letter-spacing': '0.02em',
+            },
           ),
           css('.modal-period').styles(
             color: AppColors.textFaint,
             fontFamily: AppFonts.mono,
-            fontSize: AppType.tiny.rem,
+            raw: {'font-size': '12px', 'margin-bottom': '22px'},
           ),
           css('.modal-desc').styles(
-            margin: .only(top: AppSpacing.xs.px),
             color: AppColors.textMuted,
-            fontSize: AppType.small.rem,
-            lineHeight: 1.75.em,
+            raw: {'font-size': '15px', 'line-height': '1.7', 'margin': '0 0 24px'},
           ),
           css('.impact', [
             css('&').styles(
-              margin: .symmetric(vertical: AppSpacing.s.px),
-              padding: .all(AppSpacing.m.px),
-              backgroundColor: AppColors.impactBg,
-              border: Border.all(color: AppColors.impactBorder, width: 1.px),
-              radius: .circular(AppRadius.m.px),
+              backgroundColor: AppColors.blueBg,
+              border: Border.all(color: AppColors.blueBorder, width: 1.px),
+              raw: {'border-radius': '8px', 'padding': '16px 18px', 'margin-bottom': '24px'},
+            ),
+            css('.impact-label').styles(
+              color: AppColors.primary,
+              fontFamily: AppFonts.mono,
+              raw: {
+                'font-size': '11px',
+                'letter-spacing': '0.1em',
+                'text-transform': 'uppercase',
+                'margin-bottom': '6px',
+              },
             ),
             css('.impact-text').styles(
-              margin: .only(top: AppSpacing.xs.px),
               color: AppColors.text,
-              fontSize: AppType.small.rem,
-              lineHeight: 1.6.em,
+              fontWeight: .w500,
+              raw: {'font-size': '14px', 'line-height': '1.6'},
             ),
           ]),
-          css('.overline.mt').styles(margin: .only(top: AppSpacing.s.px)),
-          css('.modal-tech').styles(
-            display: .flex,
-            flexWrap: .wrap,
-            gap: Gap.all(AppSpacing.xs.px),
-            margin: .only(top: AppSpacing.xs.px),
+          css('.stack-label').styles(
+            color: AppColors.textFaint,
+            fontFamily: AppFonts.mono,
+            fontWeight: .w500,
+            raw: {
+              'font-size': '11px',
+              'letter-spacing': '0.1em',
+              'text-transform': 'uppercase',
+              'margin-bottom': '10px',
+            },
           ),
-          css('.modal-links').styles(
+          css('.modal-tags').styles(
             display: .flex,
             flexWrap: .wrap,
             gap: Gap.all(AppSpacing.s.px),
-            margin: .only(top: AppSpacing.m.px),
+            raw: {'margin-bottom': '24px'},
           ),
+          css('.modal-tags .tag').styles(
+            color: AppColors.chipTextMuted,
+            backgroundColor: AppColors.chipBg,
+            fontFamily: AppFonts.mono,
+            raw: {'font-size': '12px', 'border-radius': '4px', 'padding': '5px 10px'},
+          ),
+          css('.modal-links').styles(
+              display: .flex, flexWrap: .wrap, gap: Gap.all(10.px)),
           css('.modal-link', [
             css('&').styles(
-              display: .inlineFlex,
-              alignItems: .center,
-              gap: Gap.all(AppSpacing.xs.px),
-              padding: .symmetric(horizontal: 14.px, vertical: 9.px),
-              color: AppColors.text,
+              color: AppColors.primary,
+              backgroundColor: AppColors.white,
               border: Border.all(color: AppColors.borderStrong, width: 1.px),
-              radius: .circular(AppRadius.s.px),
-              fontSize: AppType.small.rem,
               fontWeight: .w600,
-              transition: Transition('all', duration: Duration(milliseconds: 150)),
+              raw: {
+                'font-size': '14px',
+                'border-radius': '6px',
+                'padding': '9px 15px',
+                'transition': 'border-color .15s, background .15s',
+              },
             ),
             css('&:hover').styles(
-              color: AppColors.primary,
+              backgroundColor: const Color('#F7F9FB'),
               border: Border.all(color: AppColors.primary, width: 1.px),
             ),
-            css('.ext').styles(
-                color: AppColors.textFaint, fontFamily: AppFonts.en),
           ]),
         ]),
       ];

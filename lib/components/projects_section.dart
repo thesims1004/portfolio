@@ -8,13 +8,8 @@ import 'project_card.dart';
 import 'project_modal.dart';
 
 /// Interactive projects section: category filter tabs with live counts, a
-/// responsive card grid, and a click-through detail modal.
-///
-/// `@client` — this island hydrates on the client so filtering and the modal
-/// work; it still server-renders (default: all projects, no modal) for SEO.
-///
-/// Styles live on this public class (jaspr's `@css` may not be applied to the
-/// private State class).
+/// responsive card grid, and a click-through detail modal. `@client` so it
+/// hydrates for filtering/modal; server-renders all cards for SEO.
 @client
 class ProjectsSection extends StatefulComponent {
   const ProjectsSection({super.key});
@@ -25,60 +20,81 @@ class ProjectsSection extends StatefulComponent {
   @css
   static List<StyleRule> get styles => [
         css('.projects', [
-          css('&').styles(backgroundColor: AppColors.surface),
+          css('&').styles(
+            border: Border.only(
+                bottom: BorderSide(color: AppColors.borderSoft, width: 1.px)),
+          ),
+          css('.inner').styles(
+            width: 100.percent,
+            maxWidth: AppLayout.maxWidth.px,
+            margin: .symmetric(horizontal: Unit.auto),
+          ),
           css('.section-title').styles(
-            margin: .only(top: AppSpacing.s.px),
             color: AppColors.text,
-            fontSize: AppType.h2.rem,
-            fontWeight: .w800,
+            fontWeight: .w700,
+            raw: {
+              'font-size': 'clamp(24px,3.2vw,30px)',
+              'line-height': '1.3',
+              'letter-spacing': '-0.02em',
+              'margin': '0 0 8px',
+            },
           ),
           css('.section-lead').styles(
-            margin: .only(top: AppSpacing.s.px),
             color: AppColors.textMuted,
-            fontSize: AppType.small.rem,
+            raw: {'font-size': '15px', 'margin': '0 0 32px'},
           ),
+          // Filter tabs.
           css('.filter-tabs').styles(
             display: .flex,
             flexWrap: .wrap,
-            gap: Gap.all(AppSpacing.l.px),
-            margin: .symmetric(vertical: AppSpacing.l.px),
+            gap: Gap.all(6.px),
             border: Border.only(
                 bottom: BorderSide(color: AppColors.border, width: 1.px)),
+            raw: {'margin-bottom': '32px', 'padding-bottom': '2px'},
           ),
           css('.filter-tab', [
             css('&').styles(
               display: .inlineFlex,
               alignItems: .center,
-              gap: Gap.all(AppSpacing.s.px),
-              padding: .only(bottom: 12.px),
+              gap: Gap.all(7.px),
               color: AppColors.textMuted,
               backgroundColor: Colors.transparent,
               border: Border.only(
                   bottom: BorderSide(color: Colors.transparent, width: 2.px)),
               cursor: .pointer,
-              fontSize: AppType.small.rem,
-              fontWeight: .w600,
-              raw: {'margin-bottom': '-1px'},
+              fontFamily: AppFonts.sans,
+              fontWeight: .w500,
+              raw: {
+                'font-size': '14px',
+                'padding': '10px 14px',
+                'margin-bottom': '-2px',
+                'white-space': 'nowrap',
+                'transition': 'color .15s',
+              },
             ),
             css('&:hover').styles(color: AppColors.text),
             css('.tab-count').styles(
               color: AppColors.textFaint,
+              backgroundColor: AppColors.chipBg,
               fontFamily: AppFonts.mono,
-              fontSize: AppType.micro.rem,
+              fontWeight: .w500,
+              raw: {'font-size': '11px', 'border-radius': '5px', 'padding': '1px 6px'},
             ),
           ]),
           css('.filter-tab.active', [
             css('&').styles(
               color: AppColors.primary,
+              fontWeight: .w600,
               border: Border.only(
                   bottom: BorderSide(color: AppColors.primary, width: 2.px)),
             ),
-            css('.tab-count').styles(color: AppColors.primary),
+            css('.tab-count').styles(
+                color: AppColors.primary, backgroundColor: AppColors.countBg),
           ]),
           css('.projects-grid').styles(
             display: .grid,
-            gap: Gap.all(AppSpacing.l.px),
-            raw: {'grid-template-columns': 'repeat(auto-fill, minmax(290px, 1fr))'},
+            gap: Gap.all(18.px),
+            raw: {'grid-template-columns': 'repeat(auto-fill,minmax(300px,1fr))'},
           ),
         ]),
       ];
@@ -101,7 +117,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     final tabs = <ProjectCategory?>[null, ...ProjectCategory.values];
 
     return section(id: 'projects', classes: 'section projects', [
-      div(classes: 'container', [
+      div(classes: 'inner', [
         span(classes: 'overline', [Component.text('Projects')]),
         h2(classes: 'section-title', [Component.text('프로젝트')]),
         p(classes: 'section-lead', [

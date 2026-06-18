@@ -4,19 +4,19 @@ import 'package:jaspr/jaspr.dart';
 import '../data/profile.dart';
 import '../design/tokens.dart';
 
-/// Sticky, blurred top navigation. Anchor links scroll to in-page sections.
+/// Sticky, blurred top navigation.
 class Header extends StatelessComponent {
   const Header({super.key});
 
   @override
   Component build(BuildContext context) {
-    return header(classes: 'site-header', [
+    return nav(classes: 'site-header', [
       div(classes: 'container header-inner', [
         a(href: '#top', classes: 'brand', [
-          span(classes: 'brand-name', [Component.text(Profile.name)]),
-          span(classes: 'brand-sub', [Component.text('· ${Profile.nameEn}')]),
+          Component.text(Profile.name),
+          span(classes: 'brand-sub', [Component.text(' · ${Profile.nameEn}')]),
         ]),
-        nav(classes: 'site-nav', [
+        div(classes: 'site-nav', [
           a(href: '#skills', classes: 'nav-link', [Component.text('Skills')]),
           a(href: '#projects', classes: 'nav-link', [Component.text('Projects')]),
           a(
@@ -34,72 +34,66 @@ class Header extends StatelessComponent {
         css('.site-header', [
           css('&').styles(
             position: .sticky(top: Unit.zero),
-            zIndex: const ZIndex(100),
-            width: 100.percent,
+            zIndex: const ZIndex(50),
             backgroundColor: AppColors.headerBg,
             border: Border.only(
-                bottom: BorderSide(color: AppColors.border, width: 1.px)),
-            raw: {'backdrop-filter': 'blur(12px)'},
+                bottom: BorderSide(color: AppColors.borderSoft, width: 1.px)),
+            raw: {'backdrop-filter': 'saturate(180%) blur(12px)'},
           ),
           css('.header-inner').styles(
             display: .flex,
             height: 60.px,
             alignItems: .center,
             justifyContent: .spaceBetween,
+            gap: Gap.all(AppSpacing.m.px),
           ),
           css('.brand', [
             css('&').styles(
-              display: .flex,
-              alignItems: .baseline,
-              gap: Gap.all(AppSpacing.s.px),
               color: AppColors.text,
-            ),
-            css('.brand-name').styles(
-              fontSize: 1.05.rem,
               fontWeight: .w700,
-              letterSpacing: (-0.3).px,
+              raw: {'font-size': '16px', 'letter-spacing': '-0.01em'},
             ),
-            css('.brand-sub').styles(
-              color: AppColors.textFaint,
-              fontSize: AppType.tiny.rem,
-              fontFamily: AppFonts.en,
-            ),
+            css('.brand-sub').styles(color: AppColors.textFaint, fontWeight: .w500),
           ]),
           css('.site-nav').styles(
             display: .flex,
             alignItems: .center,
-            gap: Gap.all(AppSpacing.l.px),
+            flexWrap: .wrap,
+            gap: Gap.all(6.px),
           ),
           css('.nav-link', [
             css('&').styles(
               color: AppColors.textMuted,
-              fontSize: AppType.small.rem,
+              fontSize: AppType.small.px,
               fontWeight: .w500,
-              fontFamily: AppFonts.en,
-              transition:
-                  Transition('color', duration: Duration(milliseconds: 150)),
+              raw: {
+                'padding': '8px 12px',
+                'border-radius': '6px',
+                'transition': 'color .15s, background .15s',
+              },
             ),
-            css('&:hover').styles(color: AppColors.text),
+            css('&:hover').styles(
+                color: AppColors.text, backgroundColor: AppColors.navHover),
           ]),
           css('.nav-cta', [
             css('&').styles(
-              padding: .symmetric(horizontal: 16.px, vertical: 8.px),
               color: AppColors.white,
               backgroundColor: AppColors.primary,
-              radius: .circular(AppRadius.s.px),
-              fontSize: AppType.small.rem,
+              fontSize: AppType.small.px,
               fontWeight: .w600,
-              raw: {'white-space': 'nowrap'},
-              transition: Transition('background-color',
-                  duration: Duration(milliseconds: 150)),
+              raw: {
+                'padding': '8px 16px',
+                'border-radius': '6px',
+                'margin-left': '6px',
+                'white-space': 'nowrap',
+                'transition': 'background .15s',
+              },
             ),
             css('&:hover').styles(backgroundColor: AppColors.primaryDark),
           ]),
         ]),
-        // On phones, drop the romanized name and tighten nav spacing.
         css.media(MediaQuery.all(maxWidth: 520.px), [
           css('.site-header .brand-sub').styles(display: .none),
-          css('.site-header .site-nav').styles(gap: Gap.all(AppSpacing.m.px)),
         ]),
       ];
 }

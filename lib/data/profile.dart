@@ -66,7 +66,7 @@ abstract final class Profile {
   ];
 
   static const skillGroups = <SkillGroup>[
-    SkillGroup('Mobile', '주력 · 영역', [
+    SkillGroup('Mobile', '주력 영역', [
       'Flutter / Dart',
       'Android (Java/Kotlin)',
       'iOS (Obj-C/Swift)',
