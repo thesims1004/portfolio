@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jaspr",
+      "runtimeExecutable": "C:\\Users\\JWSIM\\AppData\\Local\\Pub\\Cache\\bin\\jaspr.bat",
+      "runtimeArgs": ["serve"],
+      "port": 8080
+    }
+  ]
+}
