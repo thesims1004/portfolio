@@ -6,6 +6,7 @@ const List<Project> projects = [
   // ── Seerslab ──────────────────────────────────────────────────────────
   Project(
     id: 'ainoon',
+    screenshots: ['images/projects/ainoon-1.jpg', 'images/projects/ainoon-2.jpg', 'images/projects/ainoon-3.jpg', 'images/projects/ainoon-4.jpg', 'images/projects/ainoon-5.jpg',],
     name: 'AInoon',
     category: ProjectCategory.seerslab,
     org: 'Seerslab',
@@ -38,6 +39,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'ainoonx',
+    screenshots: ['images/projects/ainoonx-1.jpg', 'images/projects/ainoonx-2.jpg', 'images/projects/ainoonx-3.jpg', 'images/projects/ainoonx-4.jpg',],
     name: 'AInoonX',
     category: ProjectCategory.seerslab,
     org: 'Seerslab',
@@ -86,7 +88,7 @@ const List<Project> projects = [
   Project(
     id: 'hamsoa-shes',
     screenshots: ['images/projects/hamsoa-shes-1.jpg', 'images/projects/hamsoa-shes-2.jpg',],
-    name: "함소아·SHE'S 한의원",
+    name: '함소아·쉬즈한의원',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2014 ~ 현재',
@@ -126,7 +128,8 @@ const List<Project> projects = [
   ),
   Project(
     id: 'hk-golf',
-    name: 'HK골프',
+    screenshots: ['images/projects/hk-golf-1.jpg', 'images/projects/hk-golf-2.jpg', 'images/projects/hk-golf-3.jpg', 'images/projects/hk-golf-4.jpg', 'images/projects/hk-golf-5.jpg',],
+    name: '한케이골프',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2024.11',
@@ -146,7 +149,7 @@ const List<Project> projects = [
   Project(
     id: 'golpai',
     screenshots: ['images/projects/golpai-1.jpg', 'images/projects/golpai-2.jpg', 'images/projects/golpai-3.jpg', 'images/projects/golpai-4.jpg', 'images/projects/golpai-5.jpg', 'images/projects/golpai-6.jpg',],
-    name: '골파이 온라인 레슨',
+    name: '골파이 온라인레슨',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2023.11 – 2024.04',
@@ -164,7 +167,7 @@ const List<Project> projects = [
   Project(
     id: 'bandai-namco',
     screenshots: ['images/projects/bandai-namco-1.jpg', 'images/projects/bandai-namco-2.jpg', 'images/projects/bandai-namco-3.jpg',],
-    name: '반다이남코코리아 멤버십·몰',
+    name: '반다이남코코리아',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2021.06 – 2021.08',
@@ -182,7 +185,8 @@ const List<Project> projects = [
   ),
   Project(
     id: 'platform-place',
-    name: '플랫폼플레이스·테바코리아·세인트제임스',
+    screenshots: ['images/projects/platform-place-1.jpg', 'images/projects/platform-place-2.jpg', 'images/projects/platform-place-3.jpg', 'images/projects/platform-place-4.jpg',],
+    name: '플랫폼플레이스 외',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2021 ~ 현재',
@@ -201,7 +205,7 @@ const List<Project> projects = [
   Project(
     id: 'kingkoil-berex',
     screenshots: ['images/projects/kingkoil-berex-1.jpg', 'images/projects/kingkoil-berex-2.jpg', 'images/projects/kingkoil-berex-3.jpg', 'images/projects/kingkoil-berex-4.jpg', 'images/projects/kingkoil-berex-5.jpg',],
-    name: '킹코일 스마트라이프 & 코웨이 BEREX',
+    name: 'King Koil · BEREX 스마트매트리스',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2019 – 2024.09',
@@ -267,7 +271,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'mobile-stock',
-    name: '모바일증권 1·2',
+    name: '모바일주식회사 1·2',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
     period: '2015',
@@ -330,9 +334,10 @@ const List<Project> projects = [
   // ── 개인·외주 ─────────────────────────────────────────────────────────
   Project(
     id: 'goodcoin',
+    screenshots: ['images/projects/goodcoin-1.jpg', 'images/projects/goodcoin-2.jpg', 'images/projects/goodcoin-3.jpg', 'images/projects/goodcoin-4.jpg', 'images/projects/goodcoin-5.jpg',],
     name: '착한동전',
     category: ProjectCategory.personalCommissioned,
-    org: '외주',
+    org: '의뢰 외주',
     period: '2016 ~ 현재',
     oneLiner: '포인트 적립·기프티콘 리워드 앱 — 9년+ 라이브 유지보수',
     description:
@@ -348,9 +353,10 @@ const List<Project> projects = [
   ),
   Project(
     id: 'pica',
+    screenshots: ['images/projects/pica-1.jpg', 'images/projects/pica-2.jpg', 'images/projects/pica-3.jpg', 'images/projects/pica-4.jpg',],
     name: 'PICA',
     category: ProjectCategory.personalCommissioned,
-    org: '개인 · 출시',
+    org: '개인 출시',
     period: '2021.04 ~ 현재',
     role: '단독 개발',
     oneLiner: 'libraw를 NDK로 직접 빌드한 RAW 사진 편집 앱 — 개인 기획·출시',
@@ -371,6 +377,7 @@ const List<Project> projects = [
   // AI 코딩 도구(Claude)를 활용해 단독 개발·출시한 com.ssgz.* 앱들.
   Project(
     id: 'paletton',
+    screenshots: ['images/projects/paletton-1.jpg', 'images/projects/paletton-2.jpg', 'images/projects/paletton-3.jpg', 'images/projects/paletton-4.jpg', 'images/projects/paletton-5.jpg',],
     name: 'Paletton',
     category: ProjectCategory.side,
     org: 'Side · AI 바이브코딩',
@@ -388,6 +395,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'runup',
+    screenshots: ['images/projects/runup-1.jpg', 'images/projects/runup-2.jpg', 'images/projects/runup-3.jpg', 'images/projects/runup-4.jpg',],
     name: 'RunUp',
     category: ProjectCategory.side,
     org: 'Side · AI 바이브코딩',
@@ -405,6 +413,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'lottolab',
+    screenshots: ['images/projects/lottolab-1.jpg', 'images/projects/lottolab-2.jpg', 'images/projects/lottolab-3.jpg', 'images/projects/lottolab-4.jpg',],
     name: '로또연구실',
     category: ProjectCategory.side,
     org: 'Side · AI 바이브코딩',
@@ -422,6 +431,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'oneul',
+    screenshots: ['images/projects/oneul-1.jpg', 'images/projects/oneul-2.jpg', 'images/projects/oneul-3.jpg', 'images/projects/oneul-4.jpg', 'images/projects/oneul-5.jpg',],
     name: '오늘은',
     category: ProjectCategory.side,
     org: 'Side · AI 바이브코딩',
@@ -437,6 +447,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'vintageshot',
+    screenshots: ['images/projects/vintageshot-1.jpg', 'images/projects/vintageshot-2.jpg', 'images/projects/vintageshot-3.jpg', 'images/projects/vintageshot-4.jpg',],
     name: 'VintageShot',
     category: ProjectCategory.side,
     org: 'Side · AI 바이브코딩',
