@@ -60,10 +60,14 @@ lib/
 
 ## 배포 흐름
 - `main` push → `.github/workflows/deploy.yml` → `jaspr build` → GitHub Pages.
-- **base-href**: jaspr 0.22엔 `--base-href` 플래그가 **없음**. 대신 정적 빌드가
-  **상대 경로**(`main.client.dart.js` 등)를 내보내므로 `/portfolio/` 하위 경로에서
-  그대로 동작함 — 별도 설정 불필요. (리포지토리명이 `portfolio`가 아니면 그 이름으로
-  접근 경로만 바뀜.)
+- **base-href (중요)**: jaspr 0.22엔 `--base-href` 플래그가 **없고**, 정적 빌드는
+  에셋을 상대 경로로 내보내지만 `<base href>`를 항상 절대 경로로 정규화한다(상대값
+  `./`는 `/./`=루트로 바뀜). 기본 `<base href="/">`면 `/portfolio/` 하위에서 이미지·
+  클라이언트 JS가 전부 404 → 이미지 깨짐 + 모달(@client) 작동 안 함.
+  → `main.server.dart`에서 `Document(base: String.fromEnvironment('BASE_HREF',
+  defaultValue: '/portfolio/'))`로 **절대 base를 `/portfolio/`로 지정**(CI 기본값).
+  로컬 dev는 `.claude/launch.json`의 `--dart-define=BASE_HREF=/`로 루트(`/`) 사용.
+  리포지토리명이 다르면 default와 launch 양쪽을 그 이름으로 바꿀 것.
 - SPA 새로고침 404 방지: 빌드 후 `index.html` → `404.html` 복사 (워크플로 포함).
 
 ## 빌드 함정 (Windows)
