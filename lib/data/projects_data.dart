@@ -271,6 +271,7 @@ const List<Project> projects = [
   ),
   Project(
     id: 'mobile-stock',
+    screenshots: ['images/projects/mobile-stock-1.jpg', 'images/projects/mobile-stock-2.jpg', 'images/projects/mobile-stock-3.jpg', 'images/projects/mobile-stock-4.jpg', 'images/projects/mobile-stock-5.jpg', 'images/projects/mobile-stock-6.jpg'],
     name: '모바일주식회사 1·2',
     category: ProjectCategory.renasoftwareMobile,
     org: 'Renasoftware · Mobile',
