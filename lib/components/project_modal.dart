@@ -94,14 +94,17 @@ class ProjectModal extends StatelessComponent {
           justifyContent: .center,
           raw: {'overflow-y': 'auto', 'padding': 'clamp(16px,5vh,64px) 16px'},
         ),
+        // Fixed (not absolute) so the dim always covers the full viewport,
+        // even when the panel is taller than the screen and the user scrolls.
         css('.modal-backdrop').styles(
-          position: .absolute(top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
+          position: .fixed(top: Unit.zero, left: Unit.zero, right: Unit.zero, bottom: Unit.zero),
           backgroundColor: AppColors.overlay,
           raw: {'backdrop-filter': 'blur(3px)'},
         ),
         css('.modal-panel', [
           css('&').styles(
             position: .relative(),
+            zIndex: const ZIndex(1),
             width: 100.percent,
             backgroundColor: AppColors.white,
             border: Border.all(color: AppColors.border, width: 1.px),
