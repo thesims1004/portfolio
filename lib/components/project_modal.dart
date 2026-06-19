@@ -49,6 +49,13 @@ class ProjectModal extends StatelessComponent {
           ]),
           div(classes: 'modal-period', [Component.text(project.period)]),
           p(classes: 'modal-desc', [Component.text(project.description)]),
+          if (project.highlights.isNotEmpty) ...[
+            div(classes: 'detail-label', [Component.text('주요 개발 내용')]),
+            ul(classes: 'detail-list', [
+              for (final h in project.highlights)
+                li([Component.text(h)]),
+            ]),
+          ],
           if (project.impact != null)
             div(classes: 'impact', [
               div(classes: 'impact-label', [Component.text('Impact')]),
@@ -226,8 +233,44 @@ class ProjectModal extends StatelessComponent {
           ),
           css('.modal-desc').styles(
             color: AppColors.textMuted,
-            raw: {'font-size': '15px', 'line-height': '1.7', 'margin': '0 0 24px'},
+            raw: {'font-size': '15px', 'line-height': '1.7', 'margin': '0 0 22px'},
           ),
+          css('.detail-label').styles(
+            color: AppColors.textFaint,
+            fontFamily: AppFonts.mono,
+            fontWeight: .w500,
+            raw: {
+              'font-size': '11px',
+              'letter-spacing': '0.1em',
+              'text-transform': 'uppercase',
+              'margin-bottom': '12px',
+            },
+          ),
+          css('.detail-list', [
+            css('&').styles(
+              display: .flex,
+              flexDirection: .column,
+              gap: Gap.all(9.px),
+              raw: {'margin': '0 0 24px', 'padding': '0', 'list-style': 'none'},
+            ),
+            css('li', [
+              css('&').styles(
+                position: .relative(),
+                color: AppColors.text,
+                raw: {
+                  'font-size': '14px',
+                  'line-height': '1.65',
+                  'padding-left': '18px',
+                },
+              ),
+              // Square accent bullet.
+              css('&::before').styles(
+                position: .absolute(left: Unit.zero),
+                color: AppColors.primary,
+                raw: {'content': '"▪"', 'top': '0'},
+              ),
+            ]),
+          ]),
           css('.impact', [
             css('&').styles(
               backgroundColor: AppColors.blueBg,

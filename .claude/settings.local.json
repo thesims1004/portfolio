@@ -60,7 +60,11 @@
       "Bash(awk ' *)",
       "Bash(awk '{print $5, $9}')",
       "Bash(curl -s https://thesims1004.github.io/portfolio/)",
-      "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://localhost:8080/)"
+      "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://localhost:8080/)",
+      "Bash(curl -sL \"https://docs.google.com/document/d/14t0qtcqqTQJmvH2I37aqTCLtY8NtNxX8/export?format=docx\" -o /tmp/p.docx)",
+      "Bash(unzip -q /tmp/p.docx)",
+      "Bash(grep -v '^$')",
+      "Bash(awk '/^AInoon \\\\\\(에이아이눈\\\\\\)/{f=1} /^AInoonX/{f=0} f' /tmp/lines.txt)"
     ]
   }
 }
