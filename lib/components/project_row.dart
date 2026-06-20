@@ -35,10 +35,12 @@ class ProjectRow extends StatelessComponent {
           ]),
           div(classes: 'prow-oneliner', [Component.text(project.oneLiner)]),
         ]),
-        div(classes: 'prow-tags', [
-          for (final t in chips) span(classes: 'tag', [Component.text(t)]),
+        div(classes: 'prow-meta', [
+          div(classes: 'prow-period', [Component.text(project.period)]),
+          div(classes: 'prow-tags', [
+            for (final t in chips) span(classes: 'tag', [Component.text(t)]),
+          ]),
         ]),
-        div(classes: 'prow-period', [Component.text(project.period)]),
         div(classes: 'prow-arrow', [Component.text('→')]),
       ],
     );
@@ -123,14 +125,25 @@ class ProjectRow extends StatelessComponent {
               'white-space': 'nowrap',
             },
           ),
-          // Tags.
-          css('.prow-tags', [
+          // Meta column: date on top, tech stack below (right-aligned).
+          css('.prow-meta', [
             css('&').styles(
+              display: .flex,
+              flexDirection: .column,
+              alignItems: .end,
+              gap: Gap.all(8.px),
+              raw: {'flex': '0 0 auto', 'max-width': '320px'},
+            ),
+            css('.prow-period').styles(
+              color: AppColors.textFaint,
+              fontFamily: AppFonts.mono,
+              raw: {'font-size': '12px'},
+            ),
+            css('.prow-tags').styles(
               display: .flex,
               flexWrap: .wrap,
               gap: Gap.all(6.px),
               justifyContent: .end,
-              raw: {'flex': '0 1 auto'},
             ),
             css('.tag').styles(
               color: AppColors.chipTextMuted,
@@ -144,21 +157,14 @@ class ProjectRow extends StatelessComponent {
               },
             ),
           ]),
-          css('.prow-period').styles(
-            color: AppColors.textFaint,
-            fontFamily: AppFonts.mono,
-            textAlign: .end,
-            raw: {'font-size': '12px', 'flex': '0 0 auto', 'min-width': '92px'},
-          ),
           css('.prow-arrow').styles(
             color: AppColors.borderStrongHover,
             raw: {'font-size': '16px', 'flex': '0 0 auto'},
           ),
         ]),
-        // Collapse the secondary columns on small screens.
+        // Collapse the meta column on small screens.
         css.media(MediaQuery.all(maxWidth: 640.px), [
-          css('.prow .prow-tags').styles(display: .none),
-          css('.prow .prow-period').styles(display: .none),
+          css('.prow .prow-meta').styles(display: .none),
         ]),
       ];
 }

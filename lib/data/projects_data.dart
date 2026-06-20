@@ -18,7 +18,6 @@ const List<Project> projects = [
     category: ProjectCategory.seerslab,
     org: 'Seerslab',
     period: '2025.05 ~ 현재',
-    role: '단독 개발',
     oneLiner: 'Android OS 기반 AI 스마트 글래스 — 컴패니언 앱·Client SDK 단독 개발',
     description:
         '마이크·이어폰·카메라가 탑재된 안드로이드 OS 기반의 AI 스마트 글래스. 하드웨어 개발 초기 '
