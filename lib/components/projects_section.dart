@@ -182,7 +182,7 @@ class ProjectsSection extends StatefulComponent {
 class _ProjectsSectionState extends State<ProjectsSection> {
   ProjectCategory? _filter; // null = 전체
   Project? _open;
-  bool _listView = true; // default: list view
+  bool _listView = false; // default: card view
 
   int _count(ProjectCategory? c) => c == null
       ? projects.length
