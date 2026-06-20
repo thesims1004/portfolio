@@ -64,7 +64,10 @@
       "Bash(curl -sL \"https://docs.google.com/document/d/14t0qtcqqTQJmvH2I37aqTCLtY8NtNxX8/export?format=docx\" -o /tmp/p.docx)",
       "Bash(unzip -q /tmp/p.docx)",
       "Bash(grep -v '^$')",
-      "Bash(awk '/^AInoon \\\\\\(에이아이눈\\\\\\)/{f=1} /^AInoonX/{f=0} f' /tmp/lines.txt)"
+      "Bash(awk '/^AInoon \\\\\\(에이아이눈\\\\\\)/{f=1} /^AInoonX/{f=0} f' /tmp/lines.txt)",
+      "Bash(grep -rlE 'final class \\(svg|rect|path\\) extends' /c/Users/JWSIM/AppData/Local/Pub/Cache/hosted/pub.dev/jaspr-0.22.4/lib/src/dom/html/)",
+      "Bash(echo \"=== svg helpers? ===\")",
+      "Bash(grep -roE 'final class \\(svg|rect|path|line|circle|polyline\\) extends Component' /c/Users/JWSIM/AppData/Local/Pub/Cache/hosted/pub.dev/jaspr-0.22.4/lib/src/dom/html/*.dart)"
     ]
   }
 }

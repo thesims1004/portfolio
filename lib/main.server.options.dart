@@ -10,6 +10,7 @@ import 'package:portfolio/components/header.dart' as _header;
 import 'package:portfolio/components/hero.dart' as _hero;
 import 'package:portfolio/components/project_card.dart' as _project_card;
 import 'package:portfolio/components/project_modal.dart' as _project_modal;
+import 'package:portfolio/components/project_row.dart' as _project_row;
 import 'package:portfolio/components/projects_section.dart'
     as _projects_section;
 import 'package:portfolio/components/skills.dart' as _skills;
@@ -42,6 +43,7 @@ ServerOptions get defaultServerOptions => ServerOptions(
     ..._hero.Hero.styles,
     ..._project_card.ProjectCard.styles,
     ..._project_modal.ProjectModal.styles,
+    ..._project_row.ProjectRow.styles,
     ..._projects_section.ProjectsSection.styles,
     ..._skills.Skills.styles,
   ],
