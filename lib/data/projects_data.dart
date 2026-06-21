@@ -22,7 +22,7 @@ const List<Project> projects = [
     description:
         '마이크·이어폰·카메라가 탑재된 안드로이드 OS 기반의 AI 스마트 글래스. 하드웨어 개발 초기 '
         '단계부터 2025년 12월 출시까지 약 8개월간 컴패니언 앱·Client SDK·글래스 탑재 AI 서비스 '
-        '앱(온디바이스 Android Java)까지 모바일 영역 전반을 단독 책임했습니다. 중국 하드웨어 '
+        '앱(온디바이스 Android Kotlin)까지 모바일 영역 전반을 단독 책임했습니다. 중국 하드웨어 '
         '제조사가 제공한 네이티브 SDK를 직접 검증·개선 요청하며 Flutter Plugin으로 래핑했고, '
         'BLE·Bluetooth·Wi-Fi 핫스팟·Wi-Fi P2P 등 다양한 통신 방식을 하나의 SDK 인터페이스로 '
         '통합했습니다.',
@@ -30,7 +30,7 @@ const List<Project> projects = [
       '컴패니언 앱(Flutter): Clean Architecture 기반 설계 — Bloc(상태관리)+Freezed(불변 모델)+GetIt(DI)로 레이어 분리·테스트 용이성 확보',
       'Client SDK(Flutter Plugin): 제조사의 Android(Java/Kotlin)·iOS(Swift) 네이티브 SDK를 Flutter Plugin으로 래핑, 제조사와 직접 SDK 테스트·버그 리포트·API 개선 요청 진행',
       '디바이스 통신: BLE 연결·Bluetooth Pairing(Classic)·Wi-Fi 핫스팟 연결 앱 연동',
-      '글래스 탑재 AI 서비스 앱(Android Java): 기존 담당자 퇴사 후 인계받아 유지보수·신규 기능 개발',
+      '글래스 탑재 AI 서비스 앱(Android Kotlin): 기존 담당자 퇴사 후 인계받아 유지보수·신규 기능 개발',
       '온디바이스 AI 대화 기능(VAD·STT·TTS 파이프라인 통합)',
       '실시간 통역 및 WebRTC·RTMP 기반 라이브 방송 기능 개발',
     ],
@@ -39,7 +39,7 @@ const List<Project> projects = [
         '시연 진행(전용 디자인 + 라이브 방송 + 실시간 통역 데모). 아티스트용 커스텀 글래스·앱 협업 협의 중.',
     techStack: [
       'Flutter / Dart',
-      'Android Java',
+      'Android Java/Kotlin',
       'iOS Swift',
       'Bloc · Freezed · GetIt',
       'BLE · Bluetooth',
@@ -76,7 +76,7 @@ const List<Project> projects = [
       'AInoon에서 검증된 SDK 구조를 재사용하여 단기간 내 통합 완료',
     ],
     impact: '검증된 SDK 구조 재사용으로 신규 디바이스 대응 기간을 1~2주로 단축.',
-    techStack: ['Flutter Plugin', 'Android Java', 'iOS Swift', 'BLE', 'Bluetooth Pairing'],
+    techStack: ['Flutter Plugin', 'Android Java/Kotlin', 'iOS Swift', 'BLE', 'Bluetooth Pairing'],
     links: [
       ProjectLink('Play Store',
           'https://play.google.com/store/apps/details?id=com.seerslab.ainoonx'),
@@ -593,8 +593,9 @@ const List<Project> projects = [
     highlights: [
       '컬러 팔레트 생성 및 이미지 기반 컬러 추출 기능',
       'AI 코딩 도구를 활용한 기획·개발·출시 단독 진행',
+      'Bloc 기반 Clean Architecture',
     ],
-    techStack: ['Flutter', 'AI 코딩'],
+    techStack: ['Flutter', 'Bloc', 'AI 코딩'],
     links: [
       ProjectLink('Play Store',
           'https://play.google.com/store/apps/details?id=com.ssgz.paletton'),
@@ -620,8 +621,9 @@ const List<Project> projects = [
     highlights: [
       'GPS 기반 러닝·하이킹·라이딩 경로·활동 기록 기능',
       'AI 코딩 도구를 활용한 기획·개발·출시 단독 진행',
+      'Bloc 기반 Clean Architecture',
     ],
-    techStack: ['Flutter', 'GPS', 'AI 코딩'],
+    techStack: ['Flutter', 'Bloc', 'GPS', 'AI 코딩'],
     links: [
       ProjectLink('Play Store',
           'https://play.google.com/store/apps/details?id=com.ssgz.runup'),
@@ -647,8 +649,9 @@ const List<Project> projects = [
     highlights: [
       'QR 스캔 당첨 확인 및 번호 분석 기능',
       'AI 코딩 도구를 활용한 기획·개발·출시 단독 진행',
+      'Bloc 기반 Clean Architecture',
     ],
-    techStack: ['Flutter', 'AI 코딩'],
+    techStack: ['Flutter', 'Bloc', 'AI 코딩'],
     links: [
       ProjectLink('Play Store',
           'https://play.google.com/store/apps/details?id=com.ssgz.lottolab'),
@@ -674,8 +677,9 @@ const List<Project> projects = [
     highlights: [
       '사주·타로·운세 콘텐츠 제공',
       'AI 코딩 도구를 활용한 기획·개발·출시 단독 진행',
+      'Bloc 기반 Clean Architecture',
     ],
-    techStack: ['Flutter', 'AI 코딩'],
+    techStack: ['Flutter', 'Bloc', 'AI 코딩'],
     links: [
       ProjectLink('Play Store',
           'https://play.google.com/store/apps/details?id=com.ssgz.oneul'),
@@ -701,8 +705,9 @@ const List<Project> projects = [
     highlights: [
       '필름 카메라 감성의 촬영 경험 제공',
       'AI 코딩 도구를 활용한 기획·개발·출시 단독 진행',
+      'Bloc 기반 Clean Architecture',
     ],
-    techStack: ['Flutter', 'Camera', 'AI 코딩'],
+    techStack: ['Flutter', 'Bloc', 'Camera', 'AI 코딩'],
     links: [
       ProjectLink('Play Store',
           'https://play.google.com/store/apps/details?id=com.ssgz.vintageshot'),

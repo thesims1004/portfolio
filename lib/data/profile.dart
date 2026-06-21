@@ -59,10 +59,10 @@ abstract final class Profile {
   static const strengths = <String>[
     'Flutter',
     'Clean Architecture',
+    'Qt/QML',
+    'C++',
     'BLE',
     'AI 디바이스',
-    '풀사이클 책임',
-    'AI 코딩 도구',
   ];
 
   static const skillGroups = <SkillGroup>[
@@ -92,9 +92,9 @@ abstract final class Profile {
     ]),
     SkillGroup('Desktop', '네이티브', [
       'C++',
+      'Qt',
       'MFC',
       'C#',
-      'Qt',
     ]),
   ];
 }
