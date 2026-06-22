@@ -1,34 +1,23 @@
-# 심진웅 · Mobile App Developer 포트폴리오
+# 심진웅 · 앱 개발자 포트폴리오
 
-15년차 모바일 앱 개발자 심진웅(Simson Shim)의 개인 포트폴리오 사이트.
-[Jaspr](https://jaspr.site) 기반 정적 사이트(SSG)로, GitHub Pages에 배포합니다.
+15년차 앱 개발자 **심진웅(Sim Jin woong)** 의 개인 포트폴리오 웹사이트입니다.
+모바일·데스크톱·AI 스마트 글래스까지, 직접 개발·출시한 프로젝트를 한곳에 모았습니다.
 
-## 개발
+🔗 **[https://thesims1004.github.io/portfolio/](https://thesims1004.github.io/portfolio/)**
 
-```bash
-dart pub get
-jaspr serve          # http://localhost:8080
-```
+## 소개
 
-jaspr CLI가 PATH에 없다면 전체 경로로 실행하세요:
-`C:\Users\JWSIM\AppData\Local\Pub\Cache\bin\jaspr.bat serve`
+- **Hero** — 프로필·자기소개·학력·연락처, 핵심 성과(누적 500만·100만 다운로드 등)
+- **Skills** — 주요 강점과 기술 스택 (Mobile · Architecture · Backend · Desktop)
+- **Projects** — AI 스마트 글래스(AInoon·AInoonX), Renasoftware 모바일·데스크톱,
+  개인·외주, AI 바이브코딩 등 24개 프로젝트. 리스트/카드 뷰 전환과 상세 모달 제공
+- **Contact** — 채용·협업 문의
 
-## 빌드
+## 만든 방식
 
-```bash
-jaspr build          # 출력: build/jaspr/
-dart analyze lib     # 정적 분석
-```
+[Jaspr](https://jaspr.site)(Dart 웹 프레임워크)로 만든 정적 사이트(SSG)이며,
+GitHub Pages에 호스팅됩니다.
 
-## 배포
+## 문의
 
-`main` 브랜치에 push하면 GitHub Actions(`.github/workflows/deploy.yml`)가
-자동으로 빌드해 GitHub Pages에 배포합니다.
-
-> **프로젝트 사이트**(`user.github.io/portfolio/`)로 배포할 경우 워크플로의
-> `jaspr build`에 `--base-href=/portfolio/`를 추가하세요.
-> **사용자 사이트**(`user.github.io`)면 기본값 `/`로 두면 됩니다.
-
-## 구조
-
-프로젝트 구조·컨벤션·TODO는 [`CLAUDE.md`](CLAUDE.md) 참고.
+📧 thesims1004@gmail.com
