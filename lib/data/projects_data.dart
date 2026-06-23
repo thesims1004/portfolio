@@ -478,7 +478,7 @@ const List<Project> projects = [
       '머신러닝 알고리즘·모델 생성/예측은 ableMAX 측 Python 라이브러리로 제공, 그 외 프로그램 영역을 2인 공동 개발',
     ],
     techStack: ['Qt/QML', 'C++'],
-    links: [ProjectLink('관련 링크', 'https://www.ablemax.co.kr/90')],
+    links: [ProjectLink('관련 링크', 'https://www.ablemax.co.kr/193')],
   ),
   Project(
     id: 'etri-cps',
