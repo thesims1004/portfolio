@@ -597,8 +597,7 @@ const List<Project> projects = [
     ],
     techStack: ['Flutter', 'Bloc', 'AI 코딩'],
     links: [
-      ProjectLink('Play Store',
-          'https://play.google.com/store/apps/details?id=com.ssgz.paletton'),
+      ProjectLink('Homepage', 'https://paletton.web.app/'),
     ],
   ),
   Project(
@@ -625,8 +624,7 @@ const List<Project> projects = [
     ],
     techStack: ['Flutter', 'Bloc', 'GPS', 'AI 코딩'],
     links: [
-      ProjectLink('Play Store',
-          'https://play.google.com/store/apps/details?id=com.ssgz.runup'),
+      ProjectLink('Homepage', 'https://runup-high.web.app/'),
     ],
   ),
   Project(
@@ -653,8 +651,7 @@ const List<Project> projects = [
     ],
     techStack: ['Flutter', 'Bloc', 'AI 코딩'],
     links: [
-      ProjectLink('Play Store',
-          'https://play.google.com/store/apps/details?id=com.ssgz.lottolab'),
+      ProjectLink('Homepage', 'https://lottolab.web.app/'),
     ],
   ),
   Project(
@@ -681,8 +678,7 @@ const List<Project> projects = [
     ],
     techStack: ['Flutter', 'Bloc', 'AI 코딩'],
     links: [
-      ProjectLink('Play Store',
-          'https://play.google.com/store/apps/details?id=com.ssgz.oneul'),
+      ProjectLink('Homepage', 'https://oneul.web.app/'),
     ],
   ),
   Project(
@@ -709,8 +705,7 @@ const List<Project> projects = [
     ],
     techStack: ['Flutter', 'Bloc', 'Camera', 'AI 코딩'],
     links: [
-      ProjectLink('Play Store',
-          'https://play.google.com/store/apps/details?id=com.ssgz.vintageshot'),
+      ProjectLink('Homepage', 'https://vintageshot.web.app/'),
     ],
   ),
 ];
