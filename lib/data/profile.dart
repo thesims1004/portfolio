@@ -31,7 +31,6 @@ abstract final class Profile {
   // ignore: unnecessary_nullable_for_final_variable_declarations
   static const String? photo = 'images/profile.jpg';
   static const title = '앱 개발자 · Mobile · Desktop · AI 스마트 글래스';
-  static const badge = '이직 활동 중 · Open to work';
   static const education = '한국기술교육대학교 컴퓨터공학부 · 2004 – 2012';
 
   static const intro =

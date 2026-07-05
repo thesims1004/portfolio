@@ -24,10 +24,6 @@ class Hero extends StatelessComponent {
           ]),
           // Identity + intro + contact.
           div(classes: 'hero-info', [
-            span(classes: 'open-badge', [
-              span(classes: 'dot', []),
-              Component.text(Profile.badge),
-            ]),
             h1(classes: 'hero-name', [
               Component.text(Profile.name),
               Component.text(' '),
@@ -131,31 +127,6 @@ class Hero extends StatelessComponent {
         ),
         // Info column.
         css('.hero-info').styles(raw: {'flex': '1 1 440px', 'min-width': '0'}),
-        css('.open-badge', [
-          css('&').styles(
-            display: .inlineFlex,
-            alignItems: .center,
-            gap: Gap.all(AppSpacing.s.px),
-            color: AppColors.primary,
-            backgroundColor: AppColors.blueBg,
-            border: Border.all(color: AppColors.blueBorder, width: 1.px),
-            fontFamily: AppFonts.mono,
-            fontWeight: .w500,
-            raw: {
-              'font-size': '12px',
-              'letter-spacing': '0.04em',
-              'border-radius': '999px',
-              'padding': '6px 13px',
-              'margin-bottom': '20px',
-            },
-          ),
-          css('.dot').styles(
-            width: 7.px,
-            height: 7.px,
-            backgroundColor: AppColors.success,
-            raw: {'border-radius': '50%'},
-          ),
-        ]),
         css('.hero-name', [
           css('&').styles(
             color: AppColors.text,
