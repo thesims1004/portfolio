@@ -543,30 +543,43 @@ const List<Project> projects = [
       'images/projects/pica-2.jpg',
       'images/projects/pica-3.jpg',
       'images/projects/pica-4.jpg',
+      'images/projects/pica-5.jpg',
     ],
     name: 'PICA',
     category: ProjectCategory.personalCommissioned,
     org: '개인 출시',
     period: '2021.04 ~ 현재',
     role: '기획·개발·디자인·출시 단독',
-    oneLiner: 'libraw를 NDK로 직접 빌드한 RAW 사진 편집 앱 — 개인 기획·출시',
+    oneLiner: 'RAW 사진 편집 앱 — Android Native에서 Flutter로 재개발해 Android·iOS 출시',
     description:
-        '당시 무료 RAW 이미지 편집 앱이 거의 부재했던 시장 상황에 착안해 직접 기획·개발한 사진 편집 '
-        '앱. 유료 솔루션을 사용하는 대신 오픈소스 libraw를 NDK로 직접 빌드해 RAW 편집 기능을 자체 '
-        '구현했고, GPUImage와 LUT image 기반의 효과·필터, 인앱 구독 결제까지 단독으로 설계·'
-        '구현했습니다. 출시 4년차에도 누적 1만+ 다운로드, 활성 사용자 약 700+를 유지하며 운영 '
-        '중이며, 현재 Flutter로 재개발하면서 iOS 출시를 준비하고 있습니다.',
+        '당시 무료 RAW 이미지 편집 앱이 거의 부재했던 시장 상황에 착안해 2021년 Android Native'
+        '(Java)로 직접 기획·개발·출시한 사진 편집 앱. 유료 솔루션 대신 오픈소스 LibRaw를 직접 '
+        '빌드해 RAW 편집 기능을 자체 구현했고, 이후 Flutter로 전면 재개발해 2026년 iOS까지 '
+        '출시했습니다. 현재 600+ 카메라 RAW 현상, 16개 컬렉션 170개 LUT 필터, 정밀 색감 보정, '
+        '온디바이스 인물·배경 분리 보정, 레시피·일괄 편집, 워터마크를 제공합니다.',
     highlights: [
-      '유료 솔루션 대신 오픈소스 libraw를 NDK로 직접 빌드해 RAW 이미지 편집 기능 자체 구현',
-      'GPUImage + LUT image 기반 다양한 효과·필터 적용',
-      '인앱 구독 결제 기능 구현',
-      '기획·개발·디자인·출시·유지보수 단독 진행',
+      '유료 솔루션 대신 오픈소스 LibRaw를 직접 빌드 — Android(NDK·CMake)와 iOS(CocoaPods)에서 '
+          '같은 소스를 컴파일해 dart:ffi로 RAW 현상 연동',
+      'GPU 프래그먼트 셰이더로 실시간 미리보기, Isolate CPU 렌더러로 원본 해상도 내보내기 — '
+          '같은 파라미터 맵으로 동일한 결과 보장',
+      'ML Kit 얼굴 인식·셀피 세그멘테이션 기반 뷰티·인물/배경 분리 보정 (마스크 처리는 모두 기기 내)',
+      '편집 설정을 레시피로 저장·공유(.pica)하고 여러 장에 일괄 적용, 내보낼 때 EXIF 메타데이터 보존',
+      'Android Native(Java) 원본: GPUImage + LUT 필터, 인앱 구독 결제 — 기획·개발·디자인·출시·'
+          '유지보수 단독 진행',
     ],
-    impact: '누적 다운로드 1만+, 활성 사용자 약 700+. 현재 Flutter로 재개발 중이며 iOS 출시 준비 중.',
-    techStack: ['Android Native (Java)', 'GPUImage', 'LUT', 'libraw (NDK)', 'In-App'],
+    impact: '누적 다운로드 1만+. Flutter 재개발로 2026년 iOS 출시, Android·iOS 동시 운영 중.',
+    techStack: [
+      'Flutter',
+      'Bloc',
+      'LibRaw (FFI·NDK)',
+      'GLSL Shader',
+      'LUT',
+      'ML Kit',
+      'In-App',
+      'Android Native (Java)',
+    ],
     links: [
-      ProjectLink('Play Store',
-          'https://play.google.com/store/apps/details?id=com.ssgz.pica'),
+      ProjectLink('Homepage', 'https://pica-editor.web.app/'),
     ],
   ),
 
@@ -607,22 +620,43 @@ const List<Project> projects = [
       'images/projects/runup-2.jpg',
       'images/projects/runup-3.jpg',
       'images/projects/runup-4.jpg',
+      'images/projects/runup-5.jpg',
+      'images/projects/runup-6.jpg',
+      'images/projects/runup-7.jpg',
     ],
     name: 'RunUp',
     category: ProjectCategory.side,
-    org: 'Side · AI 바이브코딩',
-    period: '2025',
-    role: '단독 개발',
-    oneLiner: '러닝·하이킹·라이딩 GPS 트래킹 앱 — AI 바이브코딩으로 개발',
+    org: 'Side · 직접 개발 + AI 코딩',
+    period: '2026.01 ~ 현재',
+    role: '기획·앱·백엔드 단독',
+    oneLiner: '러닝·하이킹·사이클링 GPS 트래킹 앱 — 트래킹 직접 개발 후 AI 코딩으로 확장',
     description:
-        'AI 코딩 도구(Claude)로 단독 개발·출시한 운동 트래킹 앱. GPS 기반으로 러닝·하이킹·라이딩의 '
-        '경로와 활동 기록을 제공합니다.',
+        'GPS 트래킹 핵심 기능을 직접 개발한 뒤, AI 코딩 도구(Claude)로 기능을 보완·추가하며 확장한 '
+        '운동 기록 앱. 계정 없이도 기록·분석이 모두 기기에서 동작하고, 로그인하면 자동 백업·피드·'
+        '랭킹 같은 커뮤니티 기능이 더해집니다. Android·iOS에 출시해 운영 중이며, 최근 버전에서는 '
+        '운동 경로를 2D 지도·3D 지형 영상으로 만들어 공유하는 리플레이 기능을 추가했습니다.',
     highlights: [
-      'GPS 기반 러닝·하이킹·라이딩 경로·활동 기록 기능',
-      'AI 코딩 도구를 활용한 기획·개발·출시 단독 진행',
-      'Bloc 기반 Clean Architecture',
+      'GPS 트래킹(위치 기록·거리/페이스 계산·일시정지 구간 처리)을 직접 개발 → AI 코딩 도구'
+          '(Claude)로 분석·커뮤니티·영상 기능 보완·추가',
+      'Android foreground service isolate 기반으로 화면이 꺼져도 장시간 기록, 목표 페이스·속도 음성(TTS) 안내',
+      'km 구간·심박수(Health Connect/Apple Health)·고도·케이던스 분석, MapLibre 3D 지형 경로, '
+          'GPX 가져오기/내보내기, 4개국 977개 정상봉 인증',
+      '운동 리플레이 영상 — 활동 시간축 기반 2D/3D 프레임을 Android MediaCodec·iOS AVAssetWriter로 '
+          '기기에서 H.264 MP4 인코딩',
+      '오프라인 우선(Drift) + Supabase(Auth·Postgres·Storage·Edge Functions) 백업·피드·XP 랭킹, '
+          'Remote Config 기반 서버 점검 모드',
     ],
-    techStack: ['Flutter', 'Bloc', 'GPS', 'AI 코딩'],
+    impact: '2026년 1월 개발 시작 → Android·iOS 출시, v1.3까지 지속 업데이트하며 운영 중.',
+    techStack: [
+      'Flutter',
+      'Riverpod',
+      'Drift',
+      'Supabase',
+      'GPS',
+      'MapLibre 3D',
+      'Firebase',
+      'AI 코딩 (Claude)',
+    ],
     links: [
       ProjectLink('Homepage', 'https://runup-high.web.app/'),
     ],
