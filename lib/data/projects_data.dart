@@ -550,34 +550,18 @@ const List<Project> projects = [
     org: '개인 출시',
     period: '2021.04 ~ 현재',
     role: '기획·개발·디자인·출시 단독',
-    oneLiner: 'RAW 사진 편집 앱 — Android Native에서 Flutter로 재개발해 Android·iOS 출시',
+    oneLiner: 'RAW 사진 편집 앱 — Flutter로 재개발해 Android·iOS 출시',
     description:
-        '당시 무료 RAW 이미지 편집 앱이 거의 부재했던 시장 상황에 착안해 2021년 Android Native'
-        '(Java)로 직접 기획·개발·출시한 사진 편집 앱. 유료 솔루션 대신 오픈소스 LibRaw를 직접 '
-        '빌드해 RAW 편집 기능을 자체 구현했고, 이후 Flutter로 전면 재개발해 2026년 iOS까지 '
-        '출시했습니다. 현재 600+ 카메라 RAW 현상, 16개 컬렉션 170개 LUT 필터, 정밀 색감 보정, '
-        '온디바이스 인물·배경 분리 보정, 레시피·일괄 편집, 워터마크를 제공합니다.',
+        '무료 RAW 편집 앱이 드물던 시장에 착안해 2021년 Android Native로 직접 기획·출시한 사진 '
+        '편집 앱. 이후 Flutter로 전면 재개발해 2026년 iOS까지 출시했습니다.',
     highlights: [
-      '유료 솔루션 대신 오픈소스 LibRaw를 직접 빌드 — Android(NDK·CMake)와 iOS(CocoaPods)에서 '
-          '같은 소스를 컴파일해 dart:ffi로 RAW 현상 연동',
-      'GPU 프래그먼트 셰이더로 실시간 미리보기, Isolate CPU 렌더러로 원본 해상도 내보내기 — '
-          '같은 파라미터 맵으로 동일한 결과 보장',
-      'ML Kit 얼굴 인식·셀피 세그멘테이션 기반 뷰티·인물/배경 분리 보정 (마스크 처리는 모두 기기 내)',
-      '편집 설정을 레시피로 저장·공유(.pica)하고 여러 장에 일괄 적용, 내보낼 때 EXIF 메타데이터 보존',
-      'Android Native(Java) 원본: GPUImage + LUT 필터, 인앱 구독 결제 — 기획·개발·디자인·출시·'
-          '유지보수 단독 진행',
+      '오픈소스 LibRaw를 직접 빌드해 RAW 편집 자체 구현 (Android·iOS 공통)',
+      'GPU 셰이더 실시간 미리보기 + 170개 LUT 필터·색감 보정',
+      'ML Kit 기반 인물·배경 분리 보정, 레시피·일괄 편집',
+      '기획·개발·디자인·출시·유지보수 단독 진행',
     ],
-    impact: '누적 다운로드 1만+. Flutter 재개발로 2026년 iOS 출시, Android·iOS 동시 운영 중.',
-    techStack: [
-      'Flutter',
-      'Bloc',
-      'LibRaw (FFI·NDK)',
-      'GLSL Shader',
-      'LUT',
-      'ML Kit',
-      'In-App',
-      'Android Native (Java)',
-    ],
+    impact: '누적 다운로드 1만+. 2026년 iOS 출시.',
+    techStack: ['Flutter', 'Bloc', 'LibRaw', 'GLSL Shader', 'ML Kit', 'Android Native (Java)'],
     links: [
       ProjectLink('Homepage', 'https://pica-editor.web.app/'),
     ],
@@ -629,34 +613,17 @@ const List<Project> projects = [
     org: 'Side · 직접 개발 + AI 코딩',
     period: '2026.01 ~ 현재',
     role: '기획·앱·백엔드 단독',
-    oneLiner: '러닝·하이킹·사이클링 GPS 트래킹 앱 — 트래킹 직접 개발 후 AI 코딩으로 확장',
+    oneLiner: '러닝·하이킹·사이클링 GPS 트래킹 앱 — 직접 개발 + AI 코딩으로 확장',
     description:
-        'GPS 트래킹 핵심 기능을 직접 개발한 뒤, AI 코딩 도구(Claude)로 기능을 보완·추가하며 확장한 '
-        '운동 기록 앱. 계정 없이도 기록·분석이 모두 기기에서 동작하고, 로그인하면 자동 백업·피드·'
-        '랭킹 같은 커뮤니티 기능이 더해집니다. Android·iOS에 출시해 운영 중이며, 최근 버전에서는 '
-        '운동 경로를 2D 지도·3D 지형 영상으로 만들어 공유하는 리플레이 기능을 추가했습니다.',
+        'GPS 트래킹 핵심 기능을 직접 개발한 뒤, AI 코딩 도구(Claude)로 기능을 보완·추가한 운동 '
+        '기록 앱. Android·iOS에 출시해 운영 중입니다.',
     highlights: [
-      'GPS 트래킹(위치 기록·거리/페이스 계산·일시정지 구간 처리)을 직접 개발 → AI 코딩 도구'
-          '(Claude)로 분석·커뮤니티·영상 기능 보완·추가',
-      'Android foreground service isolate 기반으로 화면이 꺼져도 장시간 기록, 목표 페이스·속도 음성(TTS) 안내',
-      'km 구간·심박수(Health Connect/Apple Health)·고도·케이던스 분석, MapLibre 3D 지형 경로, '
-          'GPX 가져오기/내보내기, 4개국 977개 정상봉 인증',
-      '운동 리플레이 영상 — 활동 시간축 기반 2D/3D 프레임을 Android MediaCodec·iOS AVAssetWriter로 '
-          '기기에서 H.264 MP4 인코딩',
-      '오프라인 우선(Drift) + Supabase(Auth·Postgres·Storage·Edge Functions) 백업·피드·XP 랭킹, '
-          'Remote Config 기반 서버 점검 모드',
+      '백그라운드 GPS 기록 + 페이스·속도 음성 안내',
+      '구간·심박수·고도 분석, 3D 지형 경로, 정상봉 인증',
+      '운동 경로를 2D/3D 리플레이 영상으로 생성·공유',
+      'Supabase 기반 백업·피드·랭킹',
     ],
-    impact: '2026년 1월 개발 시작 → Android·iOS 출시, v1.3까지 지속 업데이트하며 운영 중.',
-    techStack: [
-      'Flutter',
-      'Riverpod',
-      'Drift',
-      'Supabase',
-      'GPS',
-      'MapLibre 3D',
-      'Firebase',
-      'AI 코딩 (Claude)',
-    ],
+    techStack: ['Flutter', 'Riverpod', 'Drift', 'Supabase', 'MapLibre', 'AI 코딩 (Claude)'],
     links: [
       ProjectLink('Homepage', 'https://runup-high.web.app/'),
     ],
